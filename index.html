@@ -1,26 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-</head>
-<body>
-# Under construction
+	<head>
+		<title>Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	</head>
+	<body>
 
-Здесь ведется работа над подробной документацией нашего шаблонизатора с обильными примерами.
 
-<pre><code class="html">
-...
-&lt;div class=&quot;header&quot;&gt;
+  <script>
+    var keywords = ["if", "else", "endif", "end if", "for", "of", "end"];
+  	hljs.registerLanguage("mindbox-templates", function (b) {
+      var a = "foreach|0 var|0 if|0 in|0 else|0 model|0 using|0 false|0true|0 null|0 int|0 for|0 double|0 decimal|0 float|0 string|0 new|0";
+      return { k: a, c: [{ cN: "built_in", b: keywords.join("|") }, { cN: "comment", b: "@[*]", e: "[*]@" }, { cN: "start", b: /[@][?\\w]*/, i: /[@][{*]/ }, { cN: "string", b: '"((?!@))', e: '"', i: "\\n" }, { b: "<", e: ">", i: "</?", sL: "xml", c: [{ b: '"@', e: '"', sL: "razor" }] }] }
+    });
+    hljs.initHighlightingOnLoad();
+  </script>
+  <style>
+  .mindbox-templates .hljs-start {
+    background-color: yellow;
+    color: black;
+  }
+  .mindbox-templates .hljs-built_in {
+  	color: #BD63C5;
+  }
+  </style>
+
+
+
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#welcome">Главная</a></li>
+							<li><a href="#conditions">Условия</a></li>
+							<li><a href="#cycles">Циклы</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Welcome -->
+					<section id="welcome" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Шаблонизатор Mindbox</h1>
+							<p>Очень подробное руководство.</p>
+							<ul class="actions">
+								<li><a href="#conditions" class="button scrolly">К примерам</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Сonditions -->
+					<section id="conditions" class="wrapper style2 fade-up">
+						<div class="inner">
+							<h2>Условия</h2>
+							<p>Чтобы поставить условную конструкцию — используйте ключевые слова if, else, endif.</p>
+
+
+<pre><code class="mindbox-templates">&lt;div class=&quot;header&quot;&gt;
   @{ if Recipient.Balance &gt; 500 }
     &lt;div&gt;У тебя уже больше половины баллов!&lt;/div&gt;
   @{ else }
     &lt;div&gt;У тебя еще меньше половины баллов! Поднажми!&lt;/div&gt;
   @{ endif }
 &lt;/div&gt;
-...
+</code></pre>
+							<ul class="actions">
+								<li><a href="#" class="button">Больше примеров</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Two -->
+					<section id="cycles" class="wrapper style2 fade-up">
+						<div class="inner">
+							<h2>Циклы</h2>
+							<p>Чтобы бахнуть обход по коллекции, используйте конструкцию for of.</p>
+
+
+<pre><code class="mindbox-templates">&lt;div class=&quot;header&quot;&gt;
+  У тебя в корзине:
+  @{ for product of Order.Products }
+    &lt;div&gt;product.DisplayName&lt;/div&gt;
+  @{ end }
+&lt;/div&gt;
 </code></pre>
 
-</body>
+							<!--div class="features">
+								<section>
+									<span class="icon major fa-code"></span>
+									<h3>Lorem ipsum amet</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-lock"></span>
+									<h3>Aliquam sed nullam</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-cog"></span>
+									<h3>Sed erat ullam corper</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-desktop"></span>
+									<h3>Veroeros quis lorem</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-chain"></span>
+									<h3>Urna quis bibendum</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-diamond"></span>
+									<h3>Aliquam urna dapibus</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+							</div-->
+							<ul class="actions">
+								<li><a href="#" class="button">Больше примеров</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
