@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Hyperspace by HTML5 UP</title>
+		<title>Шаблонизатор Mindbox</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -19,26 +19,18 @@
 	</head>
 	<body>
 
-
-  <script>
-    var keywords = ["if", "else", "endif", "end if", "for", "of", "end"];
-  	hljs.registerLanguage("mindbox-templates", function (b) {
-      var a = "foreach|0 var|0 if|0 in|0 else|0 model|0 using|0 false|0true|0 null|0 int|0 for|0 double|0 decimal|0 float|0 string|0 new|0";
-      return { k: a, c: [{ cN: "built_in", b: keywords.join("|") }, { cN: "comment", b: "@[*]", e: "[*]@" }, { cN: "start", b: /[@][?\\w]*/, i: /[@][{*]/ }, { cN: "string", b: '"((?!@))', e: '"', i: "\\n" }, { b: "<", e: ">", i: "</?", sL: "xml", c: [{ b: '"@', e: '"', sL: "razor" }] }] }
-    });
-    hljs.initHighlightingOnLoad();
-  </script>
-  <style>
-  .mindbox-templates .hljs-start {
-    background-color: yellow;
-    color: black;
-  }
-  .mindbox-templates .hljs-built_in {
-  	color: #BD63C5;
-  }
-  </style>
-
-
+	  <style>
+		[data-template] {
+			display: none;
+		}
+		.mindbox-templates .hljs-start {
+			background-color: yellow;
+			color: black;
+		}
+		.mindbox-templates .hljs-built_in {
+			color: #BD63C5;
+		}
+	  </style>
 
 
 		<!-- Sidebar -->
@@ -74,15 +66,16 @@
 							<h2>Условия</h2>
 							<p>Чтобы поставить условную конструкцию — используйте ключевые слова if, else, endif.</p>
 
+							<div data-template>
+								<div class="header">
+									@{ if Recipient.Balance > 500 }
+										<div>У тебя уже больше половины баллов!</div>
+									@{ else }
+										<div>У тебя еще меньше половины баллов! Поднажми!</div>
+									@{ endif }
+								</div>
+							</div>
 
-<pre><code class="mindbox-templates">&lt;div class=&quot;header&quot;&gt;
-  @{ if Recipient.Balance &gt; 500 }
-    &lt;div&gt;У тебя уже больше половины баллов!&lt;/div&gt;
-  @{ else }
-    &lt;div&gt;У тебя еще меньше половины баллов! Поднажми!&lt;/div&gt;
-  @{ endif }
-&lt;/div&gt;
-</code></pre>
 							<ul class="actions">
 								<li><a href="#" class="button">Больше примеров</a></li>
 							</ul>
@@ -95,14 +88,14 @@
 							<h2>Циклы</h2>
 							<p>Чтобы бахнуть обход по коллекции, используйте конструкцию for of.</p>
 
-
-<pre><code class="mindbox-templates">&lt;div class=&quot;header&quot;&gt;
-  У тебя в корзине:
-  @{ for product of Order.Products }
-    &lt;div&gt;product.DisplayName&lt;/div&gt;
-  @{ end }
-&lt;/div&gt;
-</code></pre>
+							<div data-template>
+								<div class="header">
+									У тебя в корзине:
+									@{ for product of Order.Products }
+										<div>product.DisplayName</div>
+									@{ end }
+								</div>
+							</div>
 
 							<!--div class="features">
 								<section>
@@ -161,6 +154,6 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+			<script src="assets/js/mindbox.js"></script>
 	</body>
 </html>
