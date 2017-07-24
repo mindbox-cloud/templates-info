@@ -82,7 +82,7 @@
 						</div>
 					</section>
 
-				<!-- Two -->
+				<!-- Cycles -->
 					<section id="cycles" class="wrapper style2 fade-up">
 						<div class="inner">
 							<h2>Циклы</h2>
@@ -97,44 +97,103 @@
 								</div>
 							</div>
 
-							<!--div class="features">
-								<section>
-									<span class="icon major fa-code"></span>
-									<h3>Lorem ipsum amet</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-lock"></span>
-									<h3>Aliquam sed nullam</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-cog"></span>
-									<h3>Sed erat ullam corper</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-desktop"></span>
-									<h3>Veroeros quis lorem</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-chain"></span>
-									<h3>Urna quis bibendum</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-diamond"></span>
-									<h3>Aliquam urna dapibus</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-							</div-->
 							<ul class="actions">
 								<li><a href="#" class="button">Больше примеров</a></li>
 							</ul>
 						</div>
 					</section>
 
+				<!-- Popular campaigns -->
+					<section id="campaigns" class="wrapper style2 spotlights">
+						<div class="inner">
+							<h2>Список кампаний</h2>
+						</div>
+
+						<section>
+							<a href="#" class="image" style="background-image: url(&quot;images/pic01.jpg&quot;); background-position: center center;"><img src="images/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Приветствие по имени</h2>
+									<div data-template>
+										<div>
+											@{ if IsEmpty(Recipient.FirstName) }Привет!@{else}Привет, ${Recipient.FirstName}!@{ end if }
+										</div>
+									</div>
+									
+									<ul class="actions">
+										<li><a href="#" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+
+						<section>
+							<a href="#" class="image" style="background-image: url(&quot;images/pic02.jpg&quot;); background-position: center center;"><img src="images/pic02.jpg" alt="" data-position="center center" style="display: none;"></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Приветствие по стандартному имени</h2>
+									<div data-template>
+										<div>
+											@{ if IsEmpty(Recipient.OnlyStandardFirstName) }Здравствуйте!@{ else }Здравствуйте, ${ Recipient.OnlyStandardFirstName }!@{ end if }
+										</div>
+									</div>
+									
+									<ul class="actions">
+										<li><a href="#" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+
+						<section>
+							<a href="#" class="image" style="background-image: url(&quot;images/pic02.jpg&quot;); background-position: center center;"><img src="images/pic02.jpg" alt="" data-position="center center" style="display: none;"></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Контент только для клиентов в сегменты</h2>
+									<div data-template>
+										<div>
+											@{ if Recipient.Segmentations.InteresovalisBatutami.InteresovalisBatutami.IsInSegment }Батуты@{end if}
+										</div>
+									</div>
+									
+									<ul class="actions">
+										<li><a href="#" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+
+						<section>
+							<a href="https://campaign-services.directcrm.ru/email/message/2597753650/view?hash=E452AA7B75D8B6F9F8F338DEDA98938A5FE0EC99&version=201155&debug=true" target="_blank" class="image" style="background-image: url("https://image.prntscr.com/image/vNU2dl0MS0G8iyokdp1HKQ.png"); background-position: center center;"><img src="https://image.prntscr.com/image/vNU2dl0MS0G8iyokdp1HKQ.png" alt="" data-position="center center" style="display: none;"></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Брошенный просмотр</h2>
+									<div data-template>
+										<div>
+											@{ for row in tableRows(Session.ProductActions.WithActionProsmotrTovaraTreker.WithMax8.Products, 2) }
+											<!-- в сессии -->
+												@{ for cell in row.Cells }
+													@{ if cell.Value.Product != null }
+														<!-- только если есть продукт -->
+													@{ end if }
+
+													@{ if not IsEmpty(cell.Value.Product.PictureUrl) }
+														<!-- только когда есть картинка -->
+													@{ end if }
+												@{ end for }
+											@{ end for }
+										</div>
+									</div>
+									
+									<ul class="actions">
+										<li><a href="#" class="button">Копировать</a></li>
+										<li><a href="http://static.directcrm.ru/email/letters/Karatov/AbandonedView/kr_trg_lost_basket.html" class="button">Открыть шаблон</a></li>
+										<li><a href="https://campaign-services.directcrm.ru/email/message/2597753650/view?hash=E452AA7B75D8B6F9F8F338DEDA98938A5FE0EC99&version=201155&debug=true" class="button">Открыть письмо</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</section>
 			</div>
 
 		<!-- Footer -->
