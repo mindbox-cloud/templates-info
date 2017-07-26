@@ -19,7 +19,26 @@ function htmlDecode(value){
   return $('<div/>').html(value).text();
 }
 
+
 $(function() {
+    $('.copy-button').parent().webuiPopover({
+        content:'Скопировано',
+        placement:'top',
+        style:'inverse',
+        animation:'pop',
+        autoHide: 700,
+        trigger:'manual'
+    });
+
+	var clipboard = new Clipboard('.copy-button');
+	clipboard.on('success', function(e) {
+        setTooltip(e.trigger, 'Скопировано!');
+	});
+
+    function setTooltip(btn){
+        $(btn).parent().webuiPopover('show');
+    }
+
 	$("[data-template]").each(function(index, item) {
 		var html = $(item).html();
 		var tabsCount = html.search(/\S|$/) - 1;

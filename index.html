@@ -14,8 +14,6 @@
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 	</head>
 	<body>
 
@@ -66,7 +64,7 @@
 							<h2>Условия</h2>
 							<p>Чтобы поставить условную конструкцию — используйте ключевые слова if, else, endif.</p>
 
-							<div data-template>
+							<div data-template id="simple-condition">
 								<div class="header">
 									@{ if Recipient.Balance > 500 }
 										<div>У тебя уже больше половины баллов!</div>
@@ -77,6 +75,7 @@
 							</div>
 
 							<ul class="actions">
+								<li><button data-clipboard-target="#simple-condition" class="button copy-button">Копировать</button></li>
 								<li><a href="#" class="button">Больше примеров</a></li>
 							</ul>
 						</div>
@@ -88,11 +87,11 @@
 							<h2>Циклы</h2>
 							<p>Чтобы бахнуть обход по коллекции, используйте конструкцию for of.</p>
 
-							<div data-template>
+							<div data-template id="simple-cycle">
 								<div class="header">
 									У тебя в корзине:
 									@{ for product of Order.Products }
-										<div>product.DisplayName</div>
+										<div>${ product.DisplayName }</div>
 									@{ end }
 								</div>
 							</div>
@@ -130,6 +129,7 @@
 								</section>
 							</div-->
 							<ul class="actions">
+								<li><button data-clipboard-target="#simple-cycle" class="button copy-button">Копировать</button></li>
 								<li><a href="#" class="button">Больше примеров</a></li>
 							</ul>
 						</div>
@@ -147,6 +147,9 @@
 			</footer>
 
 		<!-- Scripts -->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css">
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -155,5 +158,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/mindbox.js"></script>
+			<script src="https://cdn.jsdelivr.net/jquery.webui-popover/2.1.15/jquery.webui-popover.min.js"></script>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/2.1.15/jquery.webui-popover.min.css">
 	</body>
 </html>
