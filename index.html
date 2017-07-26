@@ -39,6 +39,7 @@
 							<li><a href="#welcome">Главная</a></li>
 							<li><a href="#conditions">Условия</a></li>
 							<li><a href="#cycles">Циклы</a></li>
+							<li><a href="#campaigns">Популярные кампании</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -114,14 +115,14 @@
 							<div class="content">
 								<div class="inner">
 									<h2>Приветствие по имени</h2>
-									<div data-template>
+									<div data-template id="hello-by-name">
 										<div>
 											@{ if IsEmpty(Recipient.FirstName) }Привет!@{else}Привет, ${Recipient.FirstName}!@{ end if }
 										</div>
 									</div>
 									
 									<ul class="actions">
-										<li><a href="#" class="button">Learn more</a></li>
+										<li><button data-clipboard-target="#hello-by-name" class="button copy-button">Копировать</button></li>
 									</ul>
 								</div>
 							</div>
@@ -132,14 +133,14 @@
 							<div class="content">
 								<div class="inner">
 									<h2>Приветствие по стандартному имени</h2>
-									<div data-template>
+									<div data-template id="hello-by-standard-name">
 										<div>
 											@{ if IsEmpty(Recipient.OnlyStandardFirstName) }Здравствуйте!@{ else }Здравствуйте, ${ Recipient.OnlyStandardFirstName }!@{ end if }
 										</div>
 									</div>
 									
 									<ul class="actions">
-										<li><a href="#" class="button">Learn more</a></li>
+										<li><button data-clipboard-target="#hello-by-standard-name" class="button copy-button">Копировать</button></li>
 									</ul>
 								</div>
 							</div>
@@ -150,14 +151,14 @@
 							<div class="content">
 								<div class="inner">
 									<h2>Контент только для клиентов в сегменты</h2>
-									<div data-template>
+									<div data-template id="for-only-in-segment">
 										<div>
 											@{ if Recipient.Segmentations.InteresovalisBatutami.InteresovalisBatutami.IsInSegment }Батуты@{end if}
 										</div>
 									</div>
 									
 									<ul class="actions">
-										<li><a href="#" class="button">Learn more</a></li>
+										<li><button data-clipboard-target="#for-only-in-segment" class="button copy-button">Копировать</button></li>
 									</ul>
 								</div>
 							</div>
@@ -168,17 +169,20 @@
 							<div class="content">
 								<div class="inner">
 									<h2>Брошенный просмотр</h2>
-									<div data-template>
+									<div data-template id="left-view">
 										<div>
 											@{ for row in tableRows(Session.ProductActions.WithActionProsmotrTovaraTreker.WithMax8.Products, 2) }
 											<!-- в сессии -->
 												@{ for cell in row.Cells }
 													@{ if cell.Value.Product != null }
 														<!-- только если есть продукт -->
-													@{ end if }
 
-													@{ if not IsEmpty(cell.Value.Product.PictureUrl) }
-														<!-- только когда есть картинка -->
+														<div>${ cell.Value.Product.DispayName }</div>
+
+														@{ if not IsEmpty(cell.Value.Product.PictureUrl) }
+															<!-- только когда есть картинка -->
+														@{ end if }
+
 													@{ end if }
 												@{ end for }
 											@{ end for }
@@ -186,7 +190,7 @@
 									</div>
 									
 									<ul class="actions">
-										<li><a href="#" class="button">Копировать</a></li>
+										<li><button data-clipboard-target="#left-view" class="button copy-button">Копировать</button></li>
 										<li><a href="http://static.directcrm.ru/email/letters/Karatov/AbandonedView/kr_trg_lost_basket.html" class="button">Открыть шаблон</a></li>
 										<li><a href="https://campaign-services.directcrm.ru/email/message/2597753650/view?hash=E452AA7B75D8B6F9F8F338DEDA98938A5FE0EC99&version=201155&debug=true" class="button">Открыть письмо</a></li>
 									</ul>
