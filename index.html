@@ -197,6 +197,42 @@
 								</div>
 							</div>
 						</section>
+
+						<section>
+							<a href="https://campaign-services.directcrm.ru/email/message/2903906443/view?hash=0F6C7A115D79A7750821EFBA419973933419ED5B&version=175029&debug=true" target="_blank" class="image" style="background-image: url("./images/AbanCart.png"); background-position: center center;"><img src="./images/AbanCart.png" alt="" data-position="center center" style="display: none;"></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Брошенная корзина</h2>
+									<div data-template id="left-cart">
+										<div>
+											@{ for row in tableRows(Recipient.PersonalProductLists.Korzina.Filtered.ShopProducts.All.PersonalOffers, 3) }
+												<!-- в корзине, с персональными предложениями -->
+												@{ for cell in row.Cells }
+													@{ if cell.Value != null }
+														@{ if cell.Value.Product != null }
+															<!-- только если есть продукт -->
+
+															<div>${ cell.Value.Product.DispayName }</div>
+
+															@{ if not IsEmpty(cell.Value.Product.PictureUrl) }
+																<!-- только когда есть картинка -->
+															@{ end if }
+
+														@{ end if }
+													@{ end if }
+												@{ end for }
+											@{ end for }
+										</div>
+									</div>
+									
+									<ul class="actions">
+										<li><button data-clipboard-target="#left-cart" class="button copy-button">Копировать</button></li>
+										<li><a href="http://static.directcrm.ru/email/letters/Divan/AbanCart/index.html" class="button">Открыть шаблон</a></li>
+										<li><a href="https://campaign-services.directcrm.ru/email/message/2903906443/view?hash=0F6C7A115D79A7750821EFBA419973933419ED5B&version=175029&debug=true" class="button">Открыть письмо</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
 					</section>
 			</div>
 
